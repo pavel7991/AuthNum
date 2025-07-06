@@ -1,0 +1,74 @@
+@use 'helpers' as *;
+
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #E8EDE7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  @include fluid-text(67, 28);
+}
+
+h2, .h2 {
+  @include fluid-text(51, 28);
+}
+
+h3, .h3 {
+  @include fluid-text(38, 22);
+}
+
+h4, .h4 {
+  @include fluid-text(28, 16);
+}
+
+h5, .h5 {
+  @include fluid-text(22, 16);
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: $transition-duration;
+}
+
+a {
+  color: inherit;
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+:focus-visible {
+  outline: rem(2) dashed $color-light;
+  outline-offset: rem(4);
+  transition-duration: 0s !important;
+}
+
+a, button {
+  &[aria-label] {
+    position: relative;
+
+    &::before {
+      content: '';
+      @include abs-center;
+      @include square(rem(44));
+    }
+  }
+}

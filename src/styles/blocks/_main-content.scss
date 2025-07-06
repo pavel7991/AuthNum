@@ -1,0 +1,14 @@
+@use '../helpers' as *;
+@use '../components' as *;
+
+.main-content {
+  flex-grow: 1;
+
+  .btn--1 {
+    @extend %button-primary;
+  }
+  .btn--2 {
+    @extend %button-secondary;
+  }
+}
+

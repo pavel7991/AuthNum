@@ -49,6 +49,12 @@ body {
   height: 100%;
   column-gap: clamp(0.625rem, -0.1116071429rem + 3.5714285714vw, 2.5rem);
 }
+@media (max-width: 48.06125rem) {
+  .main-num-auth__inner {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+}
 
 .num-auth-form {
   display: flex;
@@ -61,8 +67,17 @@ body {
 }
 .num-auth-form__logo img {
   display: block;
-  width: 80%;
   margin: 0 auto;
+}
+@media (min-width: 48.06125rem) {
+  .num-auth-form__logo img {
+    width: 80%;
+  }
+}
+@media (max-width: 48.06125rem) {
+  .num-auth-form__logo img {
+    height: 3.125rem;
+  }
 }
 .num-auth-form__row {
   display: flex;

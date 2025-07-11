@@ -6,6 +6,11 @@
 		justify-content: center;
 		height: 100%;
 		column-gap: fluid(40, 10);
+
+		@include tablet {
+			flex-direction: column;
+			row-gap: 1rem;
+		}
 	}
 }
 

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-	alert('test hello from jQuery')
 	let displayFocus = null
 	const displayLogin = $('[data-js-display-login]')
 	const displayPassword = $('[data-js-display-password]')

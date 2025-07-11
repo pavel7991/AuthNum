@@ -12,8 +12,14 @@
 
     img {
       display: block;
-      width: 80%;
       margin: 0 auto;
+
+      @include tablet-above {
+        width: 80%;
+      }
+      @include tablet {
+        height: rem(50);
+      }
     }
   }
 

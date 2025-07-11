@@ -23,5 +23,10 @@
     "postcss-cli": "^11.0.1",
     "sass": "^1.89.2",
     "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "jquery-mask-plugin": "^1.14.16",
+    "prettier": "^3.6.2"
   }
 }

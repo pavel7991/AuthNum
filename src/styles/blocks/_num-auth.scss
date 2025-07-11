@@ -1,0 +1,11 @@
+@use '../helpers' as *;
+
+.num-auth {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	row-gap: fluid(50, 20);
+	min-height: 100vh;
+
+	background-color: rgba($color-gray--100, 0.5);
+	color: $color-dark;
+}

@@ -1,203 +1,6 @@
-@charset "UTF-8";
-/**
-  Нормализация блочной модели
- */
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-/**
-  Убираем внутренние отступы слева тегам списков,
-  у которых есть атрибут class
- */
-:where(ul, ol):where([class]) {
-  padding-left: 0;
-}
-
-/**
-  Убираем внешние отступы body и двум другим тегам,
-  у которых есть атрибут class
- */
-body,
-:where(blockquote, figure):where([class]) {
-  margin: 0;
-}
-
-/**
-  Убираем внешние отступы вертикали нужным тегам,
-  у которых есть атрибут class
- */
-:where(h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-dl):where([class]) {
-  margin-block: 0;
-}
-
-:where(dd[class]) {
-  margin-left: 0;
-}
-
-:where(fieldset[class]) {
-  margin-left: 0;
-  padding: 0;
-  border: none;
-}
-
-/**
-  Убираем стандартный маркер маркированному списку,
-  у которого есть атрибут class
- */
-:where(ul[class]) {
-  list-style: none;
-}
-
-:where(address[class]) {
-  font-style: normal;
-}
-
-/**
-  Обнуляем вертикальные внешние отступы параграфа,
-  объявляем локальную переменную для внешнего отступа вниз,
-  чтобы избежать взаимодействие с более сложным селектором
- */
-p {
-  --paragraphMarginBottom: 24px;
-  margin-block: 0;
-}
-
-/**
-  Внешний отступ вниз для параграфа без атрибута class,
-  который расположен не последним среди своих соседних элементов
- */
-p:where(:not([class]):not(:last-child)) {
-  margin-bottom: var(--paragraphMarginBottom);
-}
-
-/**
-  Упрощаем работу с изображениями и видео
- */
-img,
-video {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/**
-  Наследуем свойства шрифт для полей ввода
- */
-input,
-textarea,
-select,
-button {
-  font: inherit;
-}
-
-html {
-  /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-  height: 100%;
-  /**
-    Убираем скачок интерфейса по горизонтали
-    при появлении / исчезновении scrollbar
-    (в некоторых браузерах)
-   */
-  scrollbar-gutter: stable;
-}
-
-/**
-  Плавный scroll
- */
-html,
-:has(:target) {
-  scroll-behavior: smooth;
-}
-
-body {
-  /**
-    Пригодится в большинстве ситуаций
-    (когда, например, нужно будет "прижать" футер к низу сайта)
-   */
-  min-height: 100%;
-  /**
-    Унифицированный интерлиньяж
-   */
-  line-height: 1.4;
-}
-
-/**
-  Нормализация высоты элемента ссылки при его инспектировании в DevTools
- */
-a:where([class]) {
-  display: inline-flex;
-}
-
-/**
-  Курсор-рука при наведении на элемент
- */
-button,
-label {
-  cursor: pointer;
-}
-
-/**
-  Приводим к единому цвету svg-элементы
- */
-[fill] {
-  fill: currentColor;
-}
-
-[stroke] {
-  stroke: currentColor;
-}
-
-/**
-  Чиним баг задержки смены цвета при взаимодействии с svg-элементами
- */
-svg * {
-  transition-property: fill, stroke;
-}
-
-/**
-  Удаляем все анимации и переходы для людей,
-  которые предпочитают их не использовать
- */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  ::before,
-  ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-@font-face {
-  font-family: "NAME_FONT";
-  src: url("../fonts/NAME_FONT-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 :root {
-  --container-width: 80rem;
-  --container-padding-x: 2.5rem;
-}
-@media (max-width: 48.06125rem) {
-  :root {
-    --container-padding-x: 1.25rem;
-  }
+  --container-width: 1170px;
+  --container-padding-x: 15px;
 }
 
 .container {
@@ -206,194 +9,168 @@ svg * {
   padding-inline: var(--container-padding-x);
 }
 
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  margin: -1px !important;
-  border: 0 !important;
-  padding: 0 !important;
-  white-space: nowrap !important;
-  clip-path: inset(100%) !important;
-  clip: rect(0 0 0 0) !important;
-  overflow: hidden !important;
-}
-
-@media (max-width: 25.06125rem) {
-  .hidden-mobile {
-    display: none !important;
-  }
-}
-
-@media (min-width: 25.06125rem) {
-  .visible-mobile {
-    display: none !important;
-  }
-}
-
-html.is-lock {
-  overflow: hidden;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.num-auth {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: clamp(1.25rem, 0.5133928571rem + 3.5714285714vw, 3.125rem);
+  min-height: 100vh;
+  background-color: rgba(228, 229, 234, 0.5);
+  color: #0c151c;
+}
+
+.header-num-auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1.25rem;
+  padding-block: clamp(0.625rem, 0.1339285714rem + 2.380952381vw, 1.875rem);
+}
+.header-num-auth__title {
+  font-size: clamp(1.125rem, 0.6830357143rem + 2.1428571429vw, 2.25rem);
+  flex: 1;
+}
+.header-num-auth__qr-code img {
+  height: clamp(1.875rem, 0.15625rem + 8.3333333333vw, 6.25rem);
+}
+
+.main-num-auth__inner {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  column-gap: clamp(0.625rem, -0.1116071429rem + 3.5714285714vw, 2.5rem);
+}
+
+.num-auth-form {
   display: flex;
   flex-direction: column;
-  background-color: #E8EDE7;
+  gap: 1rem;
+  align-items: stretch;
+}
+.num-auth-form__logo {
+  margin-bottom: 2rem;
+}
+.num-auth-form__logo img {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+.num-auth-form__row {
+  display: flex;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 0.3125rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+.num-auth-form__row.is-focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+}
+.num-auth-form__row.is-focus .num-auth-form__label {
+  color: #0d6efd;
+  background-color: rgba(13, 110, 253, 0.1);
+}
+.num-auth-form__label {
+  display: flex;
+  align-items: center;
+  padding-inline: 0.625rem;
+  background-color: #e9ecef;
+  border-right: 1px solid #ced4da;
+  color: #0c151c;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.num-auth-form__input {
+  flex: 1;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #0c151c;
+  background-color: transparent;
+  transition: box-shadow 0.3s ease;
+}
+.num-auth-form__input:focus {
+  outline: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
+.num-auth-keyboard {
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  grid-auto-rows: 1fr;
+  gap: 0.5rem;
 }
-
-h1, .h1 {
-  font-size: clamp(1.75rem, 0.7437913907rem + 4.3046357616vw, 4.1875rem);
-}
-
-h2, .h2 {
-  font-size: clamp(1.75rem, 1.1565949227rem + 2.5386313466vw, 3.1875rem);
-}
-
-h3, .h3 {
-  font-size: clamp(1.375rem, 0.962196468rem + 1.766004415vw, 2.375rem);
-}
-
-h4, .h4 {
-  font-size: clamp(1rem, 0.690397351rem + 1.3245033113vw, 1.75rem);
-}
-
-h5, .h5 {
-  font-size: clamp(1rem, 0.8451986755rem + 0.6622516556vw, 1.375rem);
-}
-
-a,
-button,
-label,
-input,
-textarea,
-select,
-svg * {
-  transition-duration: 0.3s;
-}
-
-a {
-  color: inherit;
-}
-a[class] {
-  text-decoration: none;
-}
-
-:focus-visible {
-  outline: 0.125rem dashed #fff;
-  outline-offset: 0.25rem;
-  transition-duration: 0s !important;
-}
-
-a[aria-label], button[aria-label] {
+.num-auth-keyboard__btn {
   position: relative;
+  aspect-ratio: 1/1;
+  font-size: 2rem;
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: pointer;
+  background-color: #e9ecef;
+  transition-duration: 0.3s;
+  border-radius: 50%;
+  border: 1px solid rgba(13, 110, 253, 0.5);
+  background-color: rgba(13, 110, 253, 0.1);
 }
-a[aria-label]::before, button[aria-label]::before {
-  content: "";
+@media (any-hover: hover) {
+  .num-auth-keyboard__btn:hover {
+    background-color: rgba(13, 110, 253, 0.5);
+  }
+}
+@media (any-hover: none) {
+  .num-auth-keyboard__btn:active {
+    background-color: rgba(13, 110, 253, 0.5);
+  }
+}
+.num-auth-keyboard__btn b {
+  font-weight: 400;
   position: absolute;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: 2.75rem;
-  height: 2.75rem;
 }
-
-.header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  background-color: #81BECE;
+.num-auth-keyboard__btn.num-auth-keyboard__btn--arr_left {
+  font-size: 3rem;
 }
-.header__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 1rem;
-}
-@media (min-width: 48.06125rem) {
-  .header__overlay {
-    display: contents;
-  }
-}
-@media (max-width: 48.06125rem) {
-  .header__overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #036280;
-  }
-  .header__overlay:not(.is-active) {
-    opacity: 0;
-    visibility: hidden;
-    translate: -100%;
-  }
-}
-
-.burger-button {
-  z-index: 1;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: space-between;
-  order: -1;
-  width: 2.125rem;
-  height: 2.125rem;
-  padding: 0.5rem 0.25rem;
+.num-auth-keyboard__submit {
+  align-self: end;
+  grid-column: span 3;
+  padding-block: 1.25rem;
   color: #fff;
-  background-color: transparent;
-  border: none;
-}
-@media (min-width: 48.06125rem) {
-  .burger-button {
-    display: none;
-  }
-}
-.burger-button.is-active .burger-button__line:first-child {
-  rotate: 45deg;
-  transform-origin: 0 0;
-  translate: 0.25em -0.07em;
-}
-.burger-button.is-active .burger-button__line:nth-child(2) {
-  rotate: -45deg;
-}
-.burger-button.is-active .burger-button__line:last-child {
-  width: 0;
-}
-.burger-button__line {
-  width: 100%;
-  height: 0.125rem;
-  border-radius: 1rem;
-  background-color: currentColor;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  cursor: pointer;
   transition-duration: 0.3s;
+  background-color: rgba(13, 110, 253, 0.6);
+  border: none;
+  border-radius: 1.25rem;
 }
-.burger-button__line:last-child {
-  width: 55%;
+@media (any-hover: hover) {
+  .num-auth-keyboard__submit:hover {
+    background-color: rgba(13, 110, 253, 0.9);
+  }
+}
+@media (any-hover: none) {
+  .num-auth-keyboard__submit:active {
+    background-color: rgba(13, 110, 253, 0.9);
+  }
 }
 
-.main-content .btn--1 {
-  padding: 0.625rem 1.25rem;
-  color: #fff;
-  background-color: #378BA4;
-  border-radius: 0.625rem;
-  border: none;
-}
-.main-content .btn--2 {
-  padding: 0.625rem 1.25rem;
-  color: #fff;
-  background-color: #012E4A;
-  border-radius: 0.625rem;
-  border: none;
-}
-.main-content {
-  flex-grow: 1;
-}
-.footer {
-  background-color: #81BECE;
+.footer-num-auth {
+  padding-block: clamp(0.625rem, 0.3794642857rem + 1.1904761905vw, 1.25rem);
+  border-top: 1px solid #ced4da;
+  background-color: rgba(13, 110, 253, 0.1);
 }
 
 /*# sourceMappingURL=styles.css.map */

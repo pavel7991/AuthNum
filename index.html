@@ -1,65 +1,104 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0"
-		>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="src/styles/styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
 			rel="stylesheet"
-			href="src/styles/styles.css"
-		>
+		/>
 		<title>Title</title>
+		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	</head>
-	
+
 	<body>
-		
-		<header class="header" data-js-header>
-			<div class="container">
-				<div class="header__inner">
-					<h5><a href="#" class="header__logo">Logo</a></h5>
-					
-					<div class="header__overlay" data-js-header-overlay>
-						<h5>Mobile menu wrapper</h5>
+		<div class="num-auth">
+			<header class="header-num-auth container">
+				<h1 class="header-num-auth__title">
+					Програма автоматизации Бизнеса | Готовое Решение Develife
+				</h1>
+				<div class="header-num-auth__qr-code">
+					<img src="./src/images/qr-code.png" alt="QR Code" />
+				</div>
+			</header>
+
+			<main class="main-num-auth">
+				<div class="main-num-auth__inner container">
+					<form class="num-auth-form" id="myForm">
+						<div class="num-auth-form__logo">
+							<img src="./src/images/logo.png" alt="Logo" />
+						</div>
+						<div class="num-auth-form__row">
+							<label class="num-auth-form__label" for="num-auth-login">
+								<img src="src/images/user-icon.svg" width="18" height="18">
+							</label>
+							<input
+								class="num-auth-form__input"
+								type="tel"
+								id="num-auth-login"
+								placeholder="Ваш телефон"
+								data-js-display-login
+							/>
+						</div>
+						<div class="num-auth-form__row">
+							<label class="num-auth-form__label" for="num-auth-password">
+								<img src="./src/images/key-icon.svg" width="18" height="18">
+							</label>
+							<input
+								class="num-auth-form__input"
+								type="password"
+								inputmode="numeric"
+								id="num-auth-password"
+								placeholder="Введіть PIN"
+								data-js-display-password
+							/>
+						</div>
+					</form>
+
+					<div class="num-auth-keyboard" data-js-keyboard>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>1</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>2</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>3</b></span>
+						<span></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>4</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>5</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>6</b></span>
+						<span></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>7</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>8</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>9</b></span>
+						<span></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-clear><b>c</b></span>
+						<span class="num-auth-keyboard__btn" data-js-keyboard-num><b>0</b></span>
+						<span
+							class="num-auth-keyboard__btn num-auth-keyboard__btn--arr_left" data-js-keyboard-del
+							><b>&larr;</b></span
+						>
+						<span></span>
+						<button
+							type="submit"
+							class="num-auth-keyboard__submit"
+							form="myForm"
+						>
+							Send
+						</button>
 					</div>
-					
-					<button
-						class="burger-button"
-						type="button"
-						aria-label="Open Menu"
-						title="Open Menu"
-						data-js-header-burger-button
-					>
-						<span class="burger-button__line"></span>
-						<span class="burger-button__line"></span>
-						<span class="burger-button__line"></span>
-					</button>
 				</div>
-			</div>
-		</header>
-		
-		<main class="main-content">
-			<div class="container">
-				<div>
-					<h1>Main-content</h1>
-					<button class="btn--1">button-primary</button>
-					<button class="btn--2">button-secondary</button>
+			</main>
+
+			<footer class="footer-num-auth">
+				<div class="container">
+					<p>copiright</p>
 				</div>
-			</div>
-		</main>
+			</footer>
+		</div>
 		
-		
-		<footer class="footer">
-			<div class="container">
-				<h5>Footer</h5>
-			</div>
-		</footer>
 		
 		
 		<!--- Scripts --->
 		<script type="module" src="./src/scripts/main.js"></script>
 	</body>
 </html>
-
-

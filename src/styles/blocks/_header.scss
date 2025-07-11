@@ -1,38 +1,20 @@
 @use '../helpers' as *;
 
-.header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  background-color: #81BECE;
+.header-num-auth {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: rem(20);
+	padding-block: fluid(30, 10);
 
-  &__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 1rem;
-  }
+	&__title {
+		font-size: fluid(36, 18);
+		flex: 1;
+	}
 
-  &__overlay {
-    @include tablet-above {
-      display: contents;
-    }
-
-    @include tablet {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #036280;
-
-      &:not(.is-active) {
-        @include hide;
-        translate: -100%;
-      }
-    }
-  }
-
+	&__qr-code {
+		img {
+			height: fluid(100, 30);
+		}
+	}
 }
-
-

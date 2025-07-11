@@ -1,11 +1,9 @@
-@use 'normalize';
-@use 'fonts';
 @use 'utils';
 @use 'globals';
 
-@use './blocks/header';
-@use 'blocks/burger-button';
-
-@use 'blocks/main-content';
-
-@use './blocks/footer';
+@use 'blocks/num-auth';
+@use 'blocks/header';
+@use 'blocks/main';
+@use 'blocks/form';
+@use 'blocks/keyboard';
+@use 'blocks/footer';

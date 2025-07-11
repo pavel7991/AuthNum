@@ -1,5 +1,8 @@
 @use '../helpers' as *;
 
-.footer {
-  background-color: #81BECE;
+.footer-num-auth {
+	padding-block: fluid(20, 10);
+	border-top: $border;
+
+	background-color: rgba($color-blue, 0.1);
 }

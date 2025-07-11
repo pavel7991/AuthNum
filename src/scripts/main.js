@@ -1,6 +1,3 @@
-import $ from 'jquery'
-import 'jquery-mask-plugin'
-
 $(document).ready(function () {
 	alert('test hello from jQuery')
 	let displayFocus = null
